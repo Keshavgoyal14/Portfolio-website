@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keshav Goyal — Software Developer &amp; AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F7F5;
+    --bg-raise: #FFFFFF;
+    --ink: #14171A;
+    --ink-soft: #4B5158;
+    --ink-faint: #8A8F94;
+    --accent: #1F3A8F;
+    --accent-soft: #E4E8F5;
+    --line: #D8D9D4;
+    --line-strong: #B7BAB6;
+    --maxw: 980px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-soft); color:var(--accent);}
+
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,244,241,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:-0.01em;
+  }
+  .navlinks{
+    display:flex; gap:28px;
+    list-style:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  .navlinks a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .navlinks a:hover{color:var(--accent);}
+  .navlinks a:focus-visible, a:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:96px 0 88px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-trace{
+    position:absolute;
+    top:0; right:-40px;
+    width:340px; height:100%;
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .avatar{
+    width:84px; height:84px; border-radius:14px;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    color:var(--bg-raise);
+    background:linear-gradient(135deg,var(--accent),#3751b3);
+    box-shadow:0 8px 18px rgba(31,58,143,0.12);
+    margin-top:6px;
+    margin-bottom:14px;
+    flex-shrink:0;
+  }
+  .hero-left{max-width:72ch}
+  .name-block{display:flex; gap:20px; align-items:center}
+  h1{margin:0}
+  .role{margin:0; margin-top:6px}
+  .hero-meta{margin-top:22px}
+  .hero-meta .pill{display:block}
+  .hero-meta .pill + .pill{margin-top:12px}
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(38px, 6vw, 58px);
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    max-width:11.5ch;
+  }
+  .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-top:20px;
+    letter-spacing:0.01em;
+  }
+  .role .sep{color:var(--line-strong); padding:0 8px;}
+  .lede{
+    margin-top:28px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-top:36px;
+  }
+  .pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    padding:7px 13px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .pill:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-soft);}
+
+  /* repo-link/button hover and focus */
+  .repo-link{transition:transform .12s ease, box-shadow .12s ease}
+  .repo-link:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(31,58,143,0.12); text-decoration:none}
+  .repo-link:focus{outline:3px solid rgba(31,58,143,0.14); outline-offset:4px}
+
+  /* ---------- Sections ---------- */
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .section-head{margin-bottom:44px;}
+  .section-sub{
+    color:var(--ink-faint);
+    font-size:14.5px;
+    margin-top:8px;
+    max-width:52ch;
+  }
+
+  /* timeline (experience) */
+  .timeline{position:relative; padding-left:28px;}
+  .timeline::before{
+    content:"";
+    position:absolute; left:4px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line-strong);
+  }
+  .tl-item{position:relative; padding-bottom:44px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-28px; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent);
+  }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    letter-spacing:0.02em;
+    margin-bottom:6px;
+  }
+  .tl-role{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:18.5px;
+  }
+  .tl-org{color:var(--ink-soft); font-size:14.5px; margin-top:2px; margin-bottom:14px;}
+  .tl-item ul{padding-left:18px; color:var(--ink-soft); font-size:15px;}
+  .tl-item li{margin-bottom:8px;}
+  .tl-item li::marker{color:var(--line-strong);}
+
+  /* projects */
+  .projects{display:flex; flex-direction:column; gap:0;}
+  .project{
+    padding:20px;
+    background:var(--bg-raise);
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(20,23,26,0.06);
+    border:1px solid rgba(20,23,26,0.04);
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .project:first-child{border-top:none;}
+  .projects{display:grid; gap:18px;}
+  .project-top{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+  }
+  .project-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:19px;
+  }
+  .project-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+  .project p.desc{color:var(--ink-soft); font-size:15px; max-width:64ch;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    padding:4px 9px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:5px;
+  }
+  .repo-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--bg-raise);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    width:fit-content;
+    padding:8px 12px; border-radius:8px; background:var(--accent);
+  }
+  .repo-link:hover{text-decoration:underline;}
+  .repo-link svg{width:13px; height:13px; flex-shrink:0;}
+
+  /* skills */
+  .skills-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:28px 40px;}
+  .skill-cat h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .skill-list{color:var(--ink); font-size:14.5px; line-height:1.9;}
+
+  /* achievements + certs */
+  .flat-list{list-style:none;}
+  .flat-list li{
+    display:flex; gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    font-size:15px;
+  }
+  .flat-list li:first-child{border-top:none;}
+  .flat-list .fl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    min-width:80px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .flat-list .fl-body strong{font-weight:600;}
+  .flat-list .fl-body{color:var(--ink-soft);}
+
+  /* education */
+  .edu-card{
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .edu-name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:18px;}
+  .edu-detail{color:var(--ink-soft); font-size:14.5px; margin-top:4px;}
+  .edu-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    white-space:nowrap;
+  }
+
+  /* contact / footer */
+  footer{padding:64px 0 48px;}
+  .contact-cta h2{max-width:14ch;}
+  .contact-links{
+    display:flex; flex-wrap:wrap; gap:14px;
+    margin-top:32px;
+  }
+  .contact-links a{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:48px; height:48px; border-radius:10px;
+    text-decoration:none; border:1px solid var(--line-strong);
+    background:var(--bg-raise); color:var(--ink); transition:background .15s ease, transform .12s ease;
+  }
+  .contact-links .icon{width:20px; height:20px; display:inline-block; fill:currentColor}
+  .sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  .contact-links a.primary{
+    background:var(--ink);
+    color:var(--bg);
+  }
+  .contact-links a:hover{background:var(--accent); border-color:var(--accent); color:#fff; transform:translateY(-3px)}
+  /* contact form */
+  .contact-form{margin-top:28px; display:flex; flex-direction:column; gap:12px; max-width:780px}
+  .contact-form label{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft)}
+  .contact-form input,.contact-form textarea{padding:12px 14px; border-radius:10px; border:1px solid var(--line-strong); background:var(--bg-raise); color:var(--ink); font-size:15px}
+  .contact-form textarea{resize:vertical}
+  .contact-submit{background:var(--accent); color:var(--bg-raise); border:none; padding:10px 14px; border-radius:10px; cursor:pointer; font-family:'IBM Plex Mono', monospace}
+  .contact-submit:hover{transform:translateY(-2px)}
+  .cf-status{font-size:13px; color:var(--ink-faint); margin-top:6px}
+  .foot-note{
+    margin-top:56px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width:640px){
+    header.hero{padding:64px 0 56px;}
+    .hero-trace{display:none;}
+    section{padding:52px 0;}
+    .skills-grid{grid-template-columns:1fr;}
+    .navlinks{gap:16px; font-size:11px;}
+    .brand{font-size:14px;}
+  }
+
+  @media (min-width:900px){
+    .projects{grid-template-columns:repeat(2, 1fr);}
+    header.hero .wrap{display:block}
+    .hero-left{display:block}
+    .hero-meta{margin-top:28px}
+    .hero-meta .pill{min-width:220px}
+  }
+
+  /* Dark mode variables */
+  body.dark{
+    --bg: #071016;
+    --bg-raise: #0b1720;
+    --ink: #e6eef3;
+    --ink-soft: #b9c6d1;
+    --ink-faint: #98a8b3;
+    --accent: #7dd3fc;
+    --accent-soft: rgba(125,211,252,0.08);
+    --line: rgba(255,255,255,0.06);
+    --line-strong: rgba(255,255,255,0.12);
+  }
+
+  /* Theme toggle */
+  .nav-actions{display:flex; align-items:center; gap:12px}
+  .theme-toggle{
+    appearance:none; border:1px solid var(--line-strong); background:var(--bg-raise);
+    color:var(--ink); padding:8px 10px; border-radius:9px; cursor:pointer; font-size:16px;
+    display:inline-flex; align-items:center; justify-content:center; width:44px; height:36px;
+    transition:transform .12s ease, background .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .theme-toggle:hover{transform:translateY(-2px)}
+  .theme-toggle:active{transform:translateY(0)}
+  .theme-toggle[aria-pressed="true"]{background:var(--accent); color:var(--bg-raise); border-color:transparent}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.visible{opacity:1; transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">KESHAV GOYAL</div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+    </div>
+    <ul class="navlinks">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#involvement">Involvement</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero reveal">
+  <div class="wrap">
+    <div class="hero-left">
+      <div class="name-block">
+        <div class="avatar" aria-hidden="true">KG</div>
+        <div>
+          <h1>Keshav Goyal</h1>
+          <div class="role">Software Developer <span class="sep">/</span> AI &amp; ML Engineer</div>
+        </div>
+      </div>
+      <p class="lede">I'm a Software Developer with a strong interest in AI, product development, and data-driven solutions. I enjoy building end-to-end applications—from responsive frontends and scalable backends to AI systems that automate workflows and solve practical business problems.</p>
+      <div class="hero-meta">
+        <a class="pill" href="mailto:keshavgoyal1404@gmail.com">keshavgoyal1404@gmail.com</a>
+        <a class="pill" href="https://github.com/Keshavgoyal14" target="_blank" rel="noopener">github.com/Keshavgoyal14</a>
+        <a class="pill" href="https://linkedin.com/in/keshavgoyal14" target="_blank" rel="noopener">linkedin.com/in/keshavgoyal14</a>
+        <a class="pill" href="https://leetcode.com/u/Keshav_goyal14/" target="_blank" rel="noopener">250+ LeetCode solved ↗</a>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-trace" viewBox="0 0 340 500" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M 340 0 L 340 80 L 260 80 L 260 140 L 300 140 L 300 220 L 220 220 L 220 300 L 280 300 L 280 380 L 200 380 L 200 500"
+          fill="none" stroke="#1F3A8F" stroke-width="1"/>
+    <circle cx="260" cy="140" r="3" fill="#1F3A8F"/>
+    <circle cx="220" cy="300" r="3" fill="#1F3A8F"/>
+    <circle cx="200" cy="380" r="3" fill="#1F3A8F"/>
+  </svg>
+</header>
+
+<section id="experience" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experience</div>
+      <h2>Where I've worked</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">May 2026 &mdash; Jun 2026</div>
+        <div class="tl-role">Product Intern</div>
+        <div class="tl-org">Homerun, Bengaluru</div>
+        <ul>
+          <li>Ran funnel analysis and cohort studies to find conversion bottlenecks across platforms, and turned them into recommendations product teams could actually act on.</li>
+          <li>Traced recurring reporting discrepancies back to their source systems and fixed the root cause, instead of patching the symptom each time.</li>
+          <li>Defined product metrics and built automated dashboards, so stakeholders stopped needing to double-check numbers before trusting them.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jun 2025 &mdash; Sep 2025</div>
+        <div class="tl-role">Web Developer Intern</div>
+        <div class="tl-org">Valsco Technology Private Ltd, Vellore</div>
+        <ul>
+          <li>Worked with backend teams to build and integrate REST APIs connecting the frontend to backend systems via React.js.</li>
+          <li>Shipped frontend features on top of those APIs with React.js and Node.js, with a direct eye on performance and usability.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Projects</div>
+      <h2>Things I've built end-to-end</h2>
+      <p class="section-sub">Not just notebooks — each of these has a working pipeline behind it, from raw data or a user request to something with a real interface.</p>
+    </div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">WaferVision AI</div>
+          <div class="project-date">Feb 2026 &mdash; Mar 2026</div>
+        </div>
+        <p class="desc">An end-to-end semiconductor wafer defect inspection platform. Trained a CNN on 4,000+ wafer images for classification alongside a YOLOv8 model for multi-defect detection, then built a FastAPI backend for real-time inference — images get processed, artifacts land in S3, and predictions with heatmap URLs get stored in MongoDB. A React dashboard layers GenAI insights on top to help trace defects back to root causes on the manufacturing line.</p>
+        <div class="stack">
+          <span class="tag">CNN</span><span class="tag">YOLOv8</span><span class="tag">PyTorch</span>
+          <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">MongoDB</span><span class="tag">AWS</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/Wafer-Map-Pattern-System" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">Intelligent Document AI for Invoice Processing</div>
+          <div class="project-date">Jan 2026 &mdash; Feb 2026</div>
+        </div>
+        <p class="desc">A multi-stage extraction pipeline that combines OCR and object detection to pull structured data out of invoices. Trained YOLOv8 on 500 annotated invoices specifically to detect dealer signatures and stamps, then added validation logic and confidence scoring so noisy or handwritten documents don't silently produce bad extractions.</p>
+        <div class="stack">
+          <span class="tag">EasyOCR</span><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/IDFC-DocAI-Intelligent-Invoice-Extraction-Validation-System" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">Smart Crop Advisory Recommendation System (SCARS)</div>
+          <div class="project-date">Sep 2025 &mdash; Oct 2025</div>
+        </div>
+        <p class="desc">A multi-agent advisory backend for farmers, orchestrated with LangGraph to handle real-time weather, market prices, crop health, lifecycle planning, and ML-based disease prediction as separate modular agents. It pulls farmer profiles and past chat history for context-aware advice, and folds live mandi prices, weather, sensor data, and disease predictions from a custom ML model into one coherent recommendation instead of five disconnected outputs.</p>
+        <div class="stack">
+          <span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">Google Gemini</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/crop-chat-agent" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">LLM-Powered Document Query&ndash;Retrieval System</div>
+          <div class="project-date">Jul 2025 &mdash; Aug 2025</div>
+        </div>
+        <p class="desc">A retrieval-augmented system for querying multi-format documents — PDF, DOCX, PPTX, XLSX, images — built for insurance, legal, HR, and compliance workflows. It handles semantic search, OCR across images and slides, and .aspx link resolution, with content moderation and secure temporary storage layered in so it holds up in production, not just in a demo.</p>
+        <div class="stack">
+          <span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">Google Gemini</span><span class="tag">Pinecone</span><span class="tag">EasyOCR</span><span class="tag">HuggingFace</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/LLM-Powered-Intelligent-Query-Retrieval-System" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">CHAT.AI</div>
+          <div class="project-date">Jun 2025 &mdash; Jul 2025</div>
+        </div>
+        <p class="desc">A full-stack AI chatbot with multi-session support and persistent chat history, which pushed engagement up 40% by letting users pick up a conversation where they left off instead of starting fresh each time. Google Gemini via LangChain handles context-aware responses, including document-based Q&amp;A on uploaded PDFs, with Pinecone semantic indexing cutting query latency by 30%. Also wired up Razorpay for premium access and AssemblyAI for audio transcription.</p>
+        <div class="stack">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span>
+          <span class="tag">LangChain</span><span class="tag">Pinecone</span><span class="tag">AWS S3</span><span class="tag">Razorpay</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/Chatbot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+      <div class="project">
+        <div class="project-top">
+          <div class="project-title">TripMate-AI Trip Planner</div>
+          <div class="project-date">Apr 2025 &mdash; May 2025</div>
+        </div>
+        <p class="desc">An AI-powered travel planner that generates, saves, and manages personalized itineraries using Gemini AI, backed by Firebase for 100% data reliability. Google Sign-In with Firestore cut login friction and kept sessions persistent across devices, Razorpay handled one-time payments for premium features, and moving to Vite plus Tailwind CSS got load times 40% faster.</p>
+        <div class="stack">
+          <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">Gemini AI</span><span class="tag">Tailwind CSS</span><span class="tag">Razorpay</span>
+        </div>
+        <a class="repo-link" href="https://github.com/Keshavgoyal14/Ai-Trip-Planner" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          View repository
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Skills</div>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h3>Languages</h3>
+        <div class="skill-list">Python, C++, Java, JavaScript, SQL, HTML, CSS</div>
+      </div>
+      <div class="skill-cat">
+        <h3>AI / ML &amp; GenAI</h3>
+        <div class="skill-list">PyTorch, Deep Learning, CNNs, YOLOv8, OpenCV, NumPy, Scikit-learn, OCR, LangChain, LangGraph, RAG</div>
+      </div>
+      <div class="skill-cat">
+        <h3>Frameworks / Libraries</h3>
+        <div class="skill-list">React, Next.js, Node.js, Express.js, FastAPI, TailwindCSS, Vite</div>
+      </div>
+      <div class="skill-cat">
+        <h3>Databases / Vector DB</h3>
+        <div class="skill-list">MongoDB, Cloud Firestore, Pinecone</div>
+      </div>
+      <div class="skill-cat">
+        <h3>Tools / Platforms</h3>
+        <div class="skill-list">Git, VS Code, Postman, Firebase (Auth, Storage, Firestore), AWS, Jupyter Notebook, Google Colab, Shopify Analytics, CleverTap</div>
+      </div>
+      <div class="skill-cat">
+        <h3>Integrations</h3>
+        <div class="skill-list">Google Gemini API, Razorpay, AssemblyAI, Hugging Face API</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Education</div>
+      <h2>Background</h2>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-name">Vellore Institute of Technology (VIT), Vellore</div>
+        <div class="edu-detail">B.Tech, Electronics and Communication Engineering</div>
+      </div>
+      <div class="edu-date">Aug 2023 &mdash; Present</div>
+    </div>
+  </div>
+</section>
+
+<section id="involvement" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Involvement</div>
+      <h2>Clubs &amp; chapters</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Apr 2024 &mdash; Mar 2025 &middot; 1 yr</div>
+        <div class="tl-role">Core Member</div>
+        <div class="tl-org">roboVITics &mdash; The Official Robotics Club of VIT &middot; Part-time &middot; Vellore, Tamil Nadu</div>
+        <ul>
+          <li>Contributed to the club's web presence and internal tools, working hands-on with web development and React.js alongside a small core team.</li>
+          <li>Wrote <a href="https://medium.com/@roboviticsvitvellore/connecting-the-dots-apis-for-smart-robotics-integration-a494c253dbb3" target="_blank" rel="noopener" style="color:var(--accent);">"Connecting the Dots: APIs for Smart Robotics Integration"</a> for the club's Medium publication, covering how APIs like ANYmal and RoboDK are used to integrate and control robotic systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Achievements &amp; Certificates</div>
+      <h2>Recognition</h2>
+    </div>
+    <ul class="flat-list">
+      <li>
+        <div class="fl-date">Ongoing</div>
+        <div class="fl-body"><strong>250+ problems solved on LeetCode</strong> — <a href="https://leetcode.com/u/Keshav_goyal14/" target="_blank" rel="noopener" style="color:var(--accent);">view profile ↗</a></div>
+      </li>
+      <li>
+        <div class="fl-date">2025</div>
+        <div class="fl-body"><strong>Smart India Hackathon (SIH)</strong> — selected as the official college representative.</div>
+      </li>
+      <li>
+        <div class="fl-date">2025</div>
+        <div class="fl-body"><strong>Bajaj HackRx 6.0</strong> — advanced to the finals, ranking in the top 50 out of 10,000+ registered teams.</div>
+      </li>
+      <li>
+        <div class="fl-date">Jul 2025</div>
+        <div class="fl-body"><strong>Oracle Cloud Infrastructure 2025 Generative AI Professional</strong> — certified.</div>
+      </li>
+      <li>
+        <div class="fl-date">Jun 2025</div>
+        <div class="fl-body"><strong>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</strong> — certified.</div>
+      </li>
+      <li>
+        <div class="fl-date">Jun 2025</div>
+        <div class="fl-body"><strong>The Complete Full-Stack Web Development Bootcamp</strong> — Udemy.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contact" class="reveal">
+  <div class="wrap">
+    <div class="contact-cta">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's talk.</h2>
+    </div>
+    <div class="contact-links" role="group" aria-label="Contact links">
+      <a class="primary" href="mailto:keshavgoyal1404@gmail.com" aria-label="Email">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11zM5.5 6L12 10.25 18.5 6"/></svg>
+        <span class="sr-only">Email</span>
+      </a>
+      <a href="https://github.com/Keshavgoyal14" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.56-.29-5.25-1.28-5.25-5.72 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.18.92-.26 1.9-.4 2.88-.4.98 0 1.96.14 2.88.4 2.19-1.49 3.15-1.18 3.15-1.18.62 1.57.23 2.73.11 3.02.74.81 1.18 1.84 1.18 3.1 0 4.45-2.7 5.43-5.27 5.71.41.35.78 1.04.78 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/keshavgoyal14" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.8 3.5-1.8 3.8 0 4.5 2.5 4.5 5.8V21H17v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg>
+        <span class="sr-only">LinkedIn</span>
+      </a>
+      <a href="tel:+917300399959" aria-label="Phone">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.05 15.05 0 0 0 6.6 6.6l2.1-2.1a1 1 0 0 1 1.1-.2c1.2.5 2.5.8 3.8.8a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.6 21.5 2.5 13.4 2.5 3a1 1 0 0 1 1-1H7a1 1 0 0 1 1 1c0 1.3.3 2.6.8 3.8.2.4 0 .9-.2 1.1L6.6 10.8z"/></svg>
+        <span class="sr-only">Phone</span>
+      </a>
+    </div>
+    <form id="contact-form" class="contact-form" novalidate>
+      <label for="cf-name">Your name</label>
+      <input id="cf-name" name="name" type="text" required placeholder="Your name">
+
+      <label for="cf-email">Email</label>
+      <input id="cf-email" name="email" type="email" required placeholder="you@example.com">
+
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" rows="5" required placeholder="Write a short message..."></textarea>
+
+      <button type="submit" class="contact-submit">Send message</button>
+      <div id="cf-status" class="cf-status" aria-live="polite"></div>
+    </form>
+    
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const root = document.body;
+    const toggle = document.getElementById('theme-toggle');
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(t){
+      if(t === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+      if(toggle){
+        const pressed = root.classList.contains('dark');
+        toggle.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+        toggle.textContent = pressed ? '☀' : '🌙';
+      }
+    }
+
+    // initialize
+    applyTheme(stored || (prefersDark ? 'dark' : 'light'));
+
+    if(toggle){
+      toggle.addEventListener('click', ()=>{
+        const next = root.classList.contains('dark') ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+      });
+      toggle.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle.click(); }
+      });
+    }
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.12});
+
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // contact form handler - opens mail client with form contents
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('cf-status');
+    if(form){
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = document.getElementById('cf-name').value.trim();
+        const email = document.getElementById('cf-email').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
+        if(!name || !email || !message){
+          if(status) status.textContent = 'Please fill out all fields.';
+          return;
+        }
+        if(status) status.textContent = 'Opening mail client...';
+        const subject = `Contact from ${name}`;
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        // construct mailto
+        const mailto = `mailto:keshavgoyal1404@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
