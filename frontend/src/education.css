@@ -1,0 +1,1 @@
+.edu-list{display:flex;flex-direction:column;gap:0}.edu-list .edu-card{padding:20px 0;border-top:1px solid var(--line)}.edu-list .edu-card:first-child{border-top:0;padding-top:0}.edu-score{color:var(--accent);font-family:'DM Mono',monospace;font-size:11px;margin-left:8px}.edu-score:before{content:'·';color:var(--line-strong);margin-right:8px}

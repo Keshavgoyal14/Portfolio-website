@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Keshav Goyal — Data Engineer and AI/ML Engineer." />
+    <title>Keshav Goyal | Data Engineer & AI/ML Engineer</title>
+  </head>
+  <body>
+    <div id="root"><main style="padding: 40px; font-family: monospace;"><h1>Loading portfolio...</h1><p>If this message stays visible, JavaScript did not start.</p></main></div>
+    <script>
+      window.addEventListener('error', function (event) {
+        var root = document.getElementById('root');
+        root.innerHTML = '<main style="padding:40px;font-family:monospace"><h1>Portfolio startup error</h1><pre style="white-space:pre-wrap">' + (event.error?.stack || event.message) + '</pre></main>';
+      });
+      window.addEventListener('unhandledrejection', function (event) {
+        var root = document.getElementById('root');
+        root.innerHTML = '<main style="padding:40px;font-family:monospace"><h1>Portfolio startup error</h1><pre style="white-space:pre-wrap">' + event.reason + '</pre></main>';
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
