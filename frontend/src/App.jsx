@@ -1,7 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FiMail, FiPhone } from 'react-icons/fi';
 import ThreeBackground from './ThreeBackground.jsx';
 import JourneyGuide from './JourneyGuide.jsx';
 import './interactive.css';
+import './contact.css';
+import './contact-icons.css';
 
 const profile = {
   name: 'Keshav Goyal',
@@ -50,6 +55,17 @@ const skills = {
 };
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
+function ContactIconLayer() {
+  const [target, setTarget] = useState(null);
+  useEffect(() => setTarget(document.querySelector('.contact-links')), []);
+  if (!target) return null;
+  return createPortal(<>
+    <a className="library-contact primary" href={`mailto:${profile.email}`} aria-label="Email Keshav" title={profile.email}><FiMail aria-hidden="true" /></a>
+    <a className="library-contact" href={profile.github} target="_blank" rel="noreferrer" aria-label="Open Keshav's GitHub" title="GitHub"><FaGithub aria-hidden="true" /></a>
+    <a className="library-contact" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="Open Keshav's LinkedIn" title="LinkedIn"><FaLinkedinIn aria-hidden="true" /></a>
+    <a className="library-contact" href="tel:+917300399959" aria-label="Call Keshav" title="+91 73003 99959"><FiPhone aria-hidden="true" /></a>
+  </>, target);
+}
 function SectionHeading({ label, title, detail }) { return <div className="section-head"><div className="eyebrow">{label}</div><h2>{title}</h2>{detail && <p className="section-sub">{detail}</p>}</div>; }
 function Timeline({ items }) { return <div className="timeline">{items.map((item) => <article className="tl-item" key={`${item.date}-${item.role}`}><div className="tl-date">{item.date}</div><div className="tl-role">{item.role}</div><div className="tl-org">{item.org}</div><ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul></article>)}</div>; }
 function ChatText({ text }) {
@@ -142,6 +158,7 @@ function App() {
 
   return <>
     <JourneyGuide />
+    <ContactIconLayer />
     <nav><div className="wrap nav-inner"><a className="brand" href="#top">KESHAV GOYAL</a><div className="nav-actions"><ul className="navlinks"><li><a className={activeSection === 'experience' ? 'active' : ''} href="#experience">Experience</a></li><li><a className={activeSection === 'projects' ? 'active' : ''} href="#projects">Projects</a></li><li><a className={activeSection === 'skills' ? 'active' : ''} href="#skills">Skills</a></li><li><a className={activeSection === 'contact' ? 'active' : ''} href="#contact">Contact</a></li></ul><button className="theme-toggle" onClick={() => setDark((value) => !value)} aria-label="Toggle dark mode" aria-pressed={dark}>{dark ? '☼' : '◐'}</button></div></div></nav>
     <main id="top">
       <header className="hero reveal"><ThreeBackground /><div className="wrap hero-grid"><div className="hero-left"><div className="name-block"><div className="avatar">KG</div><div><h1>Keshav Goyal</h1><div className="role">Data Engineer <span className="sep">/</span> AI & ML Engineer</div></div></div><p className="lede">I design reliable data pipelines and intelligent systems that turn complex information into useful decisions. My work spans data engineering, analytics, machine learning, and production-ready AI applications.</p><div className="hero-meta"><a className="pill" href={`mailto:${profile.email}`}>{profile.email}</a><a className="pill" href={profile.github} target="_blank" rel="noreferrer">GitHub <Arrow /></a><a className="pill" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /></a><a className="pill" href={profile.leetcode} target="_blank" rel="noreferrer">250+ LeetCode solved <Arrow /></a></div></div><div className="hero-note"><span>Currently building</span><strong>intelligent data<br />systems with impact.</strong><i>01 — 06</i></div></div></header>
