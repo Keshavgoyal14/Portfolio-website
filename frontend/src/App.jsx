@@ -146,7 +146,13 @@ function App() {
     setChatLoading(true);
     try {
       const result = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message }) });
-      const data = await result.json();
+      const responseText = await result.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(`Chat API returned a non-JSON response (${result.status}).`);
+      }
       if (!result.ok) throw new Error(data.error || 'Chat request failed.');
       setChatMessages((current) => [...current, { role: 'assistant', text: data.reply }]);
     } catch (error) {

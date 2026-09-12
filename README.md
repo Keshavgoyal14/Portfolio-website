@@ -35,11 +35,15 @@ This project can deploy as one Node service on Render, Railway, or Fly.io.
 
 The backend serves the compiled React app from `dist/` and handles `/api/chat`.
 
-### Netlify frontend
+### Netlify
 
 Netlify should use the repository root as its base directory. The included `netlify.toml` sets:
 
 - Build command: `npm run build`
 - Publish directory: `frontend/dist`
+- Functions directory: `netlify/functions`
+- Environment variable: `GEMINI_API_KEY=your_key`
+
+The `/api/chat` route is redirected to the `chat` Netlify Function. The function calls Gemini server-side, so the API key is never bundled into the frontend.
 
 If Netlify still shows `Current directory: /opt/build/repo/frontend`, clear the Base directory field in Site configuration, then redeploy. The `react-icons` dependency is installed from the root `package.json`.
