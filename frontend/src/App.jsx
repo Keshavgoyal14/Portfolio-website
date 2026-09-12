@@ -83,7 +83,7 @@ function App() {
   const [chatInput, setChatInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
   const [chatMessages, setChatMessages] = useState([{ role: 'assistant', text: 'Hi, I can answer questions about Keshav\'s projects, skills, and experience.' }]);
-  const [chatOpen, setChatOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(true);
   const [activeSection, setActiveSection] = useState('top');
   const [expandedProject, setExpandedProject] = useState(null);
 
