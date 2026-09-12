@@ -34,3 +34,12 @@ This project can deploy as one Node service on Render, Railway, or Fly.io.
 - Optional environment variable: `API_PORT` (the hosting platform provides `PORT`; use the platform's port if required)
 
 The backend serves the compiled React app from `dist/` and handles `/api/chat`.
+
+### Netlify frontend
+
+Netlify should use the repository root as its base directory. The included `netlify.toml` sets:
+
+- Build command: `npm run build`
+- Publish directory: `frontend/dist`
+
+If Netlify still shows `Current directory: /opt/build/repo/frontend`, clear the Base directory field in Site configuration, then redeploy. The `react-icons` dependency is installed from the root `package.json`.
